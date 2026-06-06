@@ -40,8 +40,11 @@ public class CatFile {
                     decompressedBaos.write(tmpBuffer, 0, numDecompressed);
                 }
             }
+
+            // byte[] outputBytes = decompressedBaos.toByteArray();            
             String outputString = decompressedBaos.toString(StandardCharsets.UTF_8);
-            System.out.print(outputString);
+
+            System.out.print(outputString.split("\0")[1]);
         } catch (Exception e) {
             System.err.print(e);
         }
