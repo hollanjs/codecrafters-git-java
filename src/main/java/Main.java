@@ -4,14 +4,15 @@ import java.nio.file.Files;
 
 public class Main {
   public static void main(String[] args){
-    // You can use print statements as follows for debugging, they'll be visible when running tests.
-    // System.err.println("Logs from your program will appear here!");
 
-    // TODO: Uncomment the code below to pass the first stage
-    
     final String command = args[0];
-    
+
     switch (command) {
+      case "cat-file" -> {
+        if("-p".equals(args[1]) && args[2] != null){
+          CatFile.parseGitFile(args[2]);
+        }
+      }
       case "init" -> {
         final File root = new File(".git");
         new File(root, "objects").mkdirs();
