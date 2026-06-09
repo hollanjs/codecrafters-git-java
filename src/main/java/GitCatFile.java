@@ -17,10 +17,10 @@ enum GitObjFileType {
     COMMIT
 }
 
-public class CatFile {
+public class GitCatFile {
     private static int BUFFER_SIZE = 128;
 
-    public static void parseGitFile(String hash){
+    public static void parseGitFile(String hash) {
         try {
             Path filePath = Path.of(".git/objects", hash.substring(0, 2), hash.substring(2));
             byte[] fileBytes = Files.readAllBytes(filePath);
@@ -41,7 +41,7 @@ public class CatFile {
                 }
             }
 
-            // byte[] outputBytes = decompressedBaos.toByteArray();            
+            // byte[] outputBytes = decompressedBaos.toByteArray();
             String outputString = decompressedBaos.toString(StandardCharsets.UTF_8);
 
             System.out.print(outputString.split("\0")[1]);
